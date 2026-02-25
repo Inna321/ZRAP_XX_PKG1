@@ -1,0 +1,123 @@
+@Metadata.layer: #PARTNER
+@UI.headerInfo:{ typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: { value: 'TravelId' },
+    description: { value: '_Customer.FirstName' }
+ }
+annotate view ZRAP_DD_TRAVEL_PROCESSOR   with 
+{
+    @UI.facet: [
+              {
+                    position: 10,
+                    purpose: #HEADER,
+                    type: #DATAPOINT_REFERENCE,
+                    label: 'Flight Ticket price',
+                    targetQualifier: 'Pricing'
+                 },
+                 {
+                     position: 20,
+                     purpose: #HEADER,
+                     type: #DATAPOINT_REFERENCE,
+                     targetQualifier: 'Status',
+                     label: 'Status'
+                  },
+                 {
+                     purpose: #STANDARD,
+                     type: #COLLECTION,
+                     position: 10,
+                     id: 'Collection',
+                     label: 'Additional Details'
+                  },
+                  {
+                       purpose: #STANDARD,
+                       type: #IDENTIFICATION_REFERENCE,
+                       position: 10,
+                       label: 'More Info',
+                       parentId: 'Collection'
+                  },
+                  {
+                       purpose: #STANDARD,
+                       type: #FIELDGROUP_REFERENCE,
+                       position: 20,
+                       label: 'Admin Data',
+                       parentId: 'Collection',
+                       targetQualifier: 'Admin'
+                  },
+                  {
+                       purpose: #STANDARD,
+                       type: #FIELDGROUP_REFERENCE,
+                       position: 30,
+                       label: 'Dates',
+                       parentId: 'Collection',
+                       targetQualifier: 'Dates'
+                   },
+                   {
+                       purpose: #STANDARD,
+                       type: #FIELDGROUP_REFERENCE,
+                       position: 40,
+                       parentId: 'Collection',
+                       targetQualifier: 'Cost',
+                       label: 'Costs Incured'
+                   },
+                   {
+                    purpose: #STANDARD,
+                    type: #LINEITEM_REFERENCE,
+                    targetElement: '_Booking',
+                    label: 'Bookings',
+                    position: 20
+                   }
+                 ]
+  @UI.lineItem: [{ position: 10   },
+                 {   type: #FOR_ACTION, label: 'Copy This Travel', dataAction: 'copytravel', inline: true, importance: #HIGH  } ] //To show filed in list
+  @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [{ position: 40 },  {   type: #FOR_ACTION, label: 'Copy This Travel', dataAction: 'copytravel'  } ]
+  TravelId;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 10 }]
+  AgencyId;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 30 }]
+  CustomerId;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 20 }]
+  @UI.fieldGroup: [{ qualifier: 'Dates', label: 'Travel Start Date', position: 10 }]
+  BeginDate;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ qualifier: 'Dates', label: 'Travel End Date', position: 20 }]
+  EndDate;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.dataPoint: { qualifier: 'Pricing', title: 'Booking Fee' }
+  @UI.fieldGroup: [{ position: 10, qualifier: 'Cost', label: 'Booking Price' }]
+  BookingFee;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.dataPoint: { qualifier: 'Pricing', title: 'Total Fee' }
+  @UI.fieldGroup: [{ position: 20, qualifier: 'Cost', label: 'Total Price' }]
+  TotalPrice;
+  @UI.lineItem: [{ position: 80 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'Cost', label: 'Currency' }]
+  CurrencyCode;
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{ position: 30 }]
+  Description;
+  @UI.lineItem: [{ position: 100, criticality: 'criticality', importance: #HIGH }]
+  @UI.dataPoint: { qualifier: 'Status', title: 'Status', criticality: 'criticality' }
+  @UI.fieldGroup: [{ qualifier: 'Dates', label: 'Status', position: 30, criticality: 'criticality'  }]
+  OverallStatus;
+  // statusText;
+  //criticality;
+  @UI.lineItem: [{ position: 110 }]
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 10, label: 'Created By' }]
+  CreatedBy;
+  @UI.lineItem: [{ position: 120 }]
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 20, label: 'Created At' }]
+  CreatedAt;
+  @UI.lineItem: [{ position: 130 }]
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 30, label: 'Last Changed By' }]
+  LastChangedBy;
+  @UI.lineItem: [{ position: 140 }]
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 40, label: 'Last Changed At' }]
+  LastChangedAt;
+
+    
+}

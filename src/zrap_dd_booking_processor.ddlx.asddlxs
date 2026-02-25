@@ -1,0 +1,81 @@
+@Metadata.layer: #PARTNER
+@UI.headerInfo:{  typeName: 'Booking',
+    typeNamePlural: 'Bookings',
+    title: {  type: #STANDARD, label: 'Booking', value: 'BookingId' },
+    description: { value: '_Carrier.Name' }
+}
+annotate view ZRAP_DD_BOOKING_Processor with 
+{
+    @UI.facet: [
+              {
+               position: 10,
+               purpose: #HEADER,
+               type: #DATAPOINT_REFERENCE,
+               targetQualifier: 'Header',
+               label: 'Booking Header'
+               },
+               {
+                purpose: #STANDARD,
+                position: 10,
+                type: #COLLECTION,
+                id: 'Collection',
+                label: 'More Info'
+               },
+               {
+                purpose: #STANDARD,
+                position: 10,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Basic Details',
+                parentId: 'Collection'
+               },
+               {
+                purpose: #STANDARD,
+                position: 20,
+                type: #FIELDGROUP_REFERENCE,
+                label: 'Booking Date',
+                targetQualifier: 'Date',
+                parentId: 'Collection'
+               },
+               {
+                purpose: #STANDARD,
+                position: 20,
+                type: #LINEITEM_REFERENCE,
+                label: 'Supplements',
+                targetElement: '_BookingSupp'
+               }
+  ]
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{  position: 10 }]
+  @UI.dataPoint: { qualifier: 'Header' }
+  BookingId;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.fieldGroup: [{ qualifier: 'Date', position: 30 }]
+  BookingDate;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.dataPoint: { qualifier: 'Header' }
+  @UI.identification: [{ position: 20 }]
+  CustomerId;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 30 }]
+  CarrierId;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 40 }]
+  ConnectionId;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.fieldGroup: [{ qualifier: 'Date', position: 10 }]
+  FlightDate;
+  @UI.lineItem: [{ position: 80 }]
+  @UI.identification: [{  position: 50 }]
+  FlightPrice;
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{  position: 60 }]
+  CurrencyCode;
+  @UI.lineItem: [{ position: 100 }]
+  @UI.fieldGroup: [{ qualifier: 'Date', position: 20 }]
+  BookingStatus;
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [{  position: 70 }]
+  LastChangedAt;
+  /* Associations */    
+} 
