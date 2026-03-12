@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service defination of Root Rivew'
+define service ZRAP_PR_TRAVEL_SD {
+  expose ZRAP_PR_TRAVEL_Processor;
+  expose /DMO/I_Agency;
+}

@@ -3,9 +3,7 @@
 {
 "FROM":
 [
-"/DMO/I_AGENCY",
-"/DMO/I_CUSTOMER",
-"/DMO/TRAVEL_M"
+"ZRAP_PR_TRAVEL"
 ],
 "ASSOCIATED":
 [
@@ -16,7 +14,9 @@
 "ZRAP_PR_BOOKING"
 ],
 "BASE":
-[],
+[
+"ZRAP_PR_TRAVEL"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":

@@ -1,0 +1,65 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeName: 'Travel',
+  typeNamePlural: 'Travels'
+//  title: {
+//    value: 'Title',
+//    type: #STANDARD
+//  },
+//  description: {
+//    value: 'DESCRIPTION',
+//    type: #STANDARD
+//  },
+//  imageUrl: 'https://www.istockphoto.com/photo/airplane-flying-over-tropical-sea-at-sunset-gm1526986072-524905290'
+//
+}
+annotate entity ZRAP_PR_TRAVEL_Processor with
+{
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }]
+  TravelId;
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  AgencyId;
+
+  //    @UI.lineItem: [{ position: 21 }]
+  //   name;
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  CustomerId;
+  //@UI.selectionField: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+  BeginDate;
+  //@UI.lineItem: [{ position: 50 }]
+  //EndDate;
+  ////@UI.lineItem: [{ position: 60 }]
+  //BookingFee;
+  @UI.selectionField: [{ position: 70 }]
+  @UI.lineItem: [{ position: 70 }]
+  TotalPrice;
+  //@UI.lineItem: [{ position: 80 }]
+  //CurrencyCode;
+  //@UI.lineItem: [{ position: 90 }]
+  //Description;
+  @UI.selectionField: [{ position: 95 }]
+  @UI.lineItem: [{ position: 95, criticality: 'Cricticality'}]
+  OverallStatus;
+  //  @UI.lineItem: [{ position: 96  }]
+  //  StatusText;
+  //  @UI.lineItem: [{ position: 97 }]
+  //  Cricticality;
+  //@UI.lineItem: [{ position: 97 }]
+  //CreatedBy;
+  //@UI.lineItem: [{ position: 99 }]
+  //CreatedAt;
+  //@UI.lineItem: [{ position: 100 }]
+  //LastChangedBy;
+  //@UI.lineItem: [{ position: 105 }]
+  //LastChangedAt;>
+  /* Associations */
+  //_Agency;
+  //_Booking;
+  //_Currency;
+  //_Customer;
+  //_Status;
+}
