@@ -1,0 +1,67 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+  typeName: 'BookingSupp',
+  typeNamePlural: 'BookingsSupp',
+  title: { value: 'BookingSupplementId'},
+  description: { value: 'Price'}
+  }
+annotate entity ZRAP_PR_BOOKINGSUPL_Processor with
+{
+  @UI.facet: [
+    // Collection - Tab1
+          { purpose: #STANDARD,
+                  type: #COLLECTION,
+                  position: 10,
+                  id: 'BSup_super',
+                  label: 'Booking Suppliment'
+      },
+
+          // Identification Refrence
+        { purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'More Info',
+                position: 10,
+                parentId: 'BSup_super'
+    },
+            { purpose: #STANDARD,
+                type: #FIELDGROUP_REFERENCE,
+                label: 'Travel_Booking Deatils ',
+                position: 20,
+                parentId: 'BSup_super',
+                targetQualifier: 'T_B_Deatails'
+    }
+
+      ]
+
+  //@UI.selectionField: [{ position: 10 }]
+  //@UI.lineItem: [{ position: 10 }]
+//
+//  TravelId;
+//  //@UI.selectionField: [{ position: 20 }]
+//  //@UI.lineItem: [{ position: 20 }]
+//  BookingId;
+  //@UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+    @UI.fieldGroup: [{ qualifier: 'T_B_Deatails' , position: 30  }]
+  BookingSupplementId;
+  //@UI.selectionField: [{ position: 40 }]
+  @UI.lineItem: [{ position: 40 }]
+    @UI.fieldGroup: [{ qualifier: 'T_B_Deatails' , position: 40  }]
+  SupplementId;
+  //@UI.selectionField: [{ position: 50 }]
+  @UI.lineItem: [{ position: 50 }]
+    @UI.fieldGroup: [{ qualifier: 'T_B_Deatails' , position: 50  }]
+  Price;
+  @UI.lineItem: [{ position: 60 }]
+    @UI.fieldGroup: [{ qualifier: 'T_B_Deatails' , position: 60  }]
+  CurrencyCode;
+  @UI.lineItem: [{ position: 70 }]
+    @UI.fieldGroup: [{ qualifier: 'T_B_Deatails' , position: 70  }]
+  LastChangedAt;
+  //@UI.lineItem: [{ position: 90 }]
+  /* Associations */
+  //_Booking;
+  //_Product;
+  //_Travel;
+
+}

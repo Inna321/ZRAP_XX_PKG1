@@ -48,7 +48,7 @@ define root view entity ZRAP_PR_TRAVEL_Processor
       LastChangedAt,
       /* Associations */
       _Agency,
-      _Booking,
+      _Booking:redirected to composition child ZRAP_PR_BOOKING_Processor,
       _Currency,
       _Customer,
       _Status

@@ -1,65 +1,149 @@
 @Metadata.layer: #CUSTOMER
 @UI.headerInfo: {
   typeName: 'Travel',
-  typeNamePlural: 'Travels'
-//  title: {
-//    value: 'Title',
+  typeNamePlural: 'Travels',
+  title: {
+    value: 'TravelId'
 //    type: #STANDARD
-//  },
-//  description: {
-//    value: 'DESCRIPTION',
-//    type: #STANDARD
-//  },
-//  imageUrl: 'https://www.istockphoto.com/photo/airplane-flying-over-tropical-sea-at-sunset-gm1526986072-524905290'
-//
+  },
+  description: {
+//    value: 'CusName'
+         value: 'CusName'
+//    type: #
+  }
+//  imageUrl: 'https://img.freepik.com/free-vector/detailed-travel-logo_23-2148627268.jpg?w=2000'
 }
 annotate entity ZRAP_PR_TRAVEL_Processor with
 {
+  // UI Facet
+
+  @UI.facet: [{ purpose: #HEADER,
+                type: #DATAPOINT_REFERENCE,
+                label: 'price_data',
+                position: 10,
+                targetQualifier : 'price_data'
+    },
+    { purpose: #HEADER,
+                type: #DATAPOINT_REFERENCE,
+                label: 'status',
+                position: 20,
+                targetQualifier : 'status'
+    },
+  // Collection - Tab1
+        { purpose: #STANDARD,
+                type: #COLLECTION,
+                position: 10,
+                id: 'super',
+                label: 'Additional Details1'
+    },
+    // Identification Refrence
+        { purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'More Info',
+                position: 10,
+                parentId: 'super'
+    },
+            { purpose: #STANDARD,
+                type: #FIELDGROUP_REFERENCE,
+                label: 'Price Data ',
+                position: 20,
+                parentId: 'super',
+                targetQualifier: 'pricing'
+    },
+            { purpose: #STANDARD,
+                type: #FIELDGROUP_REFERENCE,
+                label: 'Dates',
+                position: 30,
+                parentId: 'super',
+                targetQualifier: 'Dates'
+    },
+
+      // Collection - Tab2
+        { purpose: #STANDARD,
+                type: #COLLECTION,
+                position: 20,
+                id: 'super2',
+                label: 'Additional Details2'
+            },
+                { purpose: #STANDARD,
+                type: #FIELDGROUP_REFERENCE,
+                label: 'Admin Info',
+                position: 10,
+                parentId: 'super2',
+                targetQualifier: 'Admin'
+    },
+      // Collection - Tab3
+        { purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                position: 30,
+                id: 'super3',
+                label: 'Line Item',
+                targetElement: '_Booking'
+            }
+      ]
+
   @UI.selectionField: [{ position: 10 }]
   @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10  }]
   TravelId;
   @UI.selectionField: [{ position: 20 }]
   @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20  }]
   AgencyId;
 
   //    @UI.lineItem: [{ position: 21 }]
   //   name;
   @UI.selectionField: [{ position: 30 }]
   @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30  }]
   CustomerId;
+  //    @UI.lineItem: [{ position: 41 }]
+  //  CusName;
   //@UI.selectionField: [{ position: 40 }]
   @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{ qualifier: 'Dates', position: 10, label: ' Begin Date' }]
   BeginDate;
   //@UI.lineItem: [{ position: 50 }]
-  //EndDate;
+  @UI.fieldGroup: [{ qualifier: 'Dates', position: 20, label: ' End Date' }]
+  EndDate;
   ////@UI.lineItem: [{ position: 60 }]
-  //BookingFee;
+  @UI.fieldGroup: [{ qualifier: 'pricing', position: 10, label: 'Booking Fee' }]
+  BookingFee;
   @UI.selectionField: [{ position: 70 }]
   @UI.lineItem: [{ position: 70 }]
+  @UI.dataPoint: { qualifier: 'price_data', title: 'Flight Price'}
+  @UI.fieldGroup: [{ qualifier: 'pricing', position: 20, label: 'Total Fee' }]
+
   TotalPrice;
   //@UI.lineItem: [{ position: 80 }]
-  //CurrencyCode;
+  @UI.fieldGroup: [{ qualifier: 'pricing', position: 30, label: 'Currency' }]
+  CurrencyCode;
   //@UI.lineItem: [{ position: 90 }]
-  //Description;
+
+  //  Description;
   @UI.selectionField: [{ position: 95 }]
   @UI.lineItem: [{ position: 95, criticality: 'Cricticality'}]
+  @UI.dataPoint: { qualifier: 'status', title: 'Travel Request status', criticality: 'Cricticality'}
+  //    @UI.dataPoint: { qualifier: 'status', criticality: 'Cricticality'}
+  @UI.fieldGroup: [{ qualifier: 'Dates', position: 30, label: 'OverallStatus' }]
   OverallStatus;
   //  @UI.lineItem: [{ position: 96  }]
   //  StatusText;
   //  @UI.lineItem: [{ position: 97 }]
   //  Cricticality;
-  //@UI.lineItem: [{ position: 97 }]
-  //CreatedBy;
-  //@UI.lineItem: [{ position: 99 }]
-  //CreatedAt;
-  //@UI.lineItem: [{ position: 100 }]
-  //LastChangedBy;
-  //@UI.lineItem: [{ position: 105 }]
-  //LastChangedAt;>
+  //  @UI.lineItem: [{ position: 97 }]
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 10, label: 'CreatedBy' }]
+  CreatedBy;
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 20, label: 'CreatedAt' }]
+  CreatedAt;
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 30, label: 'LastChangedBy' }]
+  LastChangedBy;
+  @UI.fieldGroup: [{ qualifier: 'Admin', position: 40, label: 'LastChangedAt' }]
+  LastChangedAt;
   /* Associations */
   //_Agency;
-  //_Booking;
+//  _Booking;
   //_Currency;
-  //_Customer;
+  //    _Customer;
   //_Status;
 }

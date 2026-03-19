@@ -1,5 +1,8 @@
 @EndUserText.label: 'Service defination of Root Rivew'
 define service ZRAP_PR_TRAVEL_SD {
-  expose ZRAP_PR_TRAVEL_Processor;
-  expose /DMO/I_Agency;
+  expose ZRAP_PR_TRAVEL_Processor      as Travel;
+  expose ZRAP_PR_BOOKING_Processor     as Booking;
+  expose ZRAP_PR_BOOKINGSUPL_Processor as BookingSupp;
+  expose /DMO/I_Agency                 as Agency;
+  expose /DMO/I_Customer               as Customer;
 }

@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+  typeName: 'Booking',
+  typeNamePlural: 'Bookings',
+  title: { value: 'BookingId'},
+  description: { value: '_carrier.Name'}
+  }
+annotate entity ZRAP_PR_BOOKING_Processor with
+{
+
+  // UI Facet
+
+  @UI.facet: [{ purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Booking Info',
+                position: 10
+    },
+    // Collection - Tab1
+          { purpose: #STANDARD,
+                  type: #COLLECTION,
+                  position: 20,
+                  id: 'B_super',
+                  label: 'Booking Suppliment'
+      },
+
+          { purpose: #STANDARD,
+                  type: #LINEITEM_REFERENCE,
+                  position: 30,
+                  id: 'super3',
+                  label: 'Line Item',
+                  targetElement: '_BookSupp'
+              }
+      ]
+  //@UI.lineItem: [{ position: 9 }]
+  //  TravelId;
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification:[{position: 10}]
+  BookingId;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification:[{position: 20}]
+  BookingDate;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification:[{position: 30}]
+  CustomerId;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification:[{position: 40}]
+  CarrierId;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification:[{position: 50}]
+  ConnectionId;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification:[{position: 60}]
+  FlightDate;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification:[{position: 70}]
+  FlightPrice;
+  @UI.identification:[{position: 80}]
+  CurrencyCode;
+  //  @ui.lineItem: [{ position: 10 }]
+  @UI.identification:[{position: 90}]
+  BookingStatus;
+  //  LastChangedAt;
+  /* Associations */
+  //  _BookSupp;
+  //  _carrier;
+  //  _Connection;
+  //  _Customer;
+  //  _Travel;
+
+}

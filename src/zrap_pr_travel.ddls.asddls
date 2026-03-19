@@ -2,7 +2,7 @@
 @EndUserText.label: 'Travel Root of BO'
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity ZRAP_PR_TRAVEL
-  as select from /dmo/travel_m
+  as select from /dmo/travel_m as Travel
   composition [0..*] of ZRAP_PR_BOOKING          as _Booking
   association [1]    to /DMO/I_Agency               as _Agency   on $projection.AgencyId = _Agency.AgencyID
   association [1]    to /DMO/I_Customer             as _Customer on $projection.CustomerId = _Customer.CustomerID

@@ -1,0 +1,29 @@
+projection;
+strict ( 2 );
+
+define behavior for ZRAP_PR_TRAVEL_Processor alias Travel
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Booking { create; }
+}
+
+define behavior for ZRAP_PR_BOOKING_Processor alias Booking
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _BookSupp { create; }
+}
+
+define behavior for ZRAP_PR_BOOKINGSUPL_Processor alias BookingSup
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+  use association _Booking;
+}

@@ -1,0 +1,8 @@
+CLASS zbp_rap_pr_travel DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zrap_pr_travel.
+
+
+ENDCLASS.
+
+CLASS zbp_rap_pr_travel IMPLEMENTATION.
+
+ENDCLASS.
